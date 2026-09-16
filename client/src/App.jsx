@@ -11,6 +11,7 @@ import Donations from './pages/Donations.jsx'
 import Expenses from './pages/Expenses.jsx'
 import Ledger from './pages/Ledger.jsx'
 import Mahaprasad from './pages/Mahaprasad.jsx'
+import GamesEvents from './pages/GamesEvents.jsx'
 import TasksAndNotes from './pages/TasksAndNotes.jsx'
 import Reports from './pages/Reports.jsx'
 import BulkImport from './pages/BulkImport.jsx'
@@ -126,6 +127,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Mahaprasad />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/games-events' 
+          element={
+            <ProtectedRoute>
+              <GamesEvents />
             </ProtectedRoute>
           }
         />

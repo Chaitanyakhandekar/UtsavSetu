@@ -56,6 +56,7 @@ import externalDonorRouter from "./routes/externalDonor.route.js"
 import mahaprasadRouter from "./routes/mahaprasad.route.js"
 import bulkImportRouter from "./routes/bulkImport.route.js"
 import taskNoteRouter from "./routes/taskNote.route.js"
+import gameRouter from "./routes/game.route.js"
 
 app.get("/api/health", (req, res) => {
     return res
@@ -78,6 +79,7 @@ app.use("/api/donors", externalDonorRouter)
 app.use("/api/mahaprasad", mahaprasadRouter)
 app.use("/api/bulk-import", bulkImportRouter)
 app.use("/api/tasks-notes", taskNoteRouter)
+app.use("/api/games", gameRouter)
 
 // Global 404 and error handlers
 app.use((req, res) => {
