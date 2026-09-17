@@ -25,7 +25,7 @@ const MobileBottomNav = ({ toggleSidebar, sidebarOpen }) => {
 
     const navItems = [
         {
-            name: "Dashboard",
+            name: "Home",
             path: "/",
             icon: LayoutDashboard,
             active: isPathActive("/")
@@ -51,7 +51,7 @@ const MobileBottomNav = ({ toggleSidebar, sidebarOpen }) => {
     ];
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 z-40 block border-t border-gray-200/80 bg-white/95 px-2 pt-2 shadow-[0_-4px_16px_rgba(0,0,0,0.04)] backdrop-blur-lg lg:hidden dark:border-gray-800/80 dark:bg-gray-900/95 dark:shadow-[0_-4px_16px_rgba(0,0,0,0.4)]"
+        <div className="fixed bottom-0 left-0 right-0 z-40 block border-t border-slate-200/80 bg-white/95 px-2 pt-2 shadow-[0_-4px_16px_rgba(0,0,0,0.04)] backdrop-blur-lg lg:hidden dark:border-gray-800/80 dark:bg-gray-900/95 dark:shadow-[0_-4px_16px_rgba(0,0,0,0.4)]"
              style={{ paddingBottom: "max(0.6rem, env(safe-area-inset-bottom))" }}>
             <div className="grid grid-cols-5 items-center">
                 {navItems.map((item) => {

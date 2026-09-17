@@ -491,7 +491,7 @@ const TasksAndNotes = () => {
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
                         <div className="flex items-center gap-2">
-                            <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                            <h1 className="pg-title">
                                 Tasks & Notes
                             </h1>
                             {selectedYear && (
@@ -500,7 +500,7 @@ const TasksAndNotes = () => {
                                 </span>
                             )}
                         </div>
-                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                        <p className="pg-subtitle">
                             Day-to-day festival coordination, grocery lists, and important notes
                         </p>
                     </div>
@@ -581,10 +581,10 @@ const TasksAndNotes = () => {
                     {/* Pending Tasks */}
                     <div
                         onClick={() => setActiveTab("tasks")}
-                        className="cursor-pointer rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3.5 sm:p-4 shadow-sm hover:border-indigo-200 dark:border-gray-800 dark:bg-gray-900 transition-all"
+                        className="card p-3.5 sm:p-4 cursor-pointer hover:border-indigo-300 transition-all"
                     >
                         <div className="flex items-center justify-between">
-                            <span className="text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400">
+                            <span className="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">
                                 Pending Tasks
                             </span>
                             <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">
@@ -592,10 +592,10 @@ const TasksAndNotes = () => {
                             </div>
                         </div>
                         <div className="mt-2 flex items-baseline gap-2">
-                            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                            <span className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
                                 {summary?.pendingTasks || 0}
                             </span>
-                            <span className="text-[11px] text-gray-400">
+                            <span className="text-[11px] text-slate-400">
                                 of {(summary?.pendingTasks || 0) + (summary?.completedTasks || 0)} total
                             </span>
                         </div>
@@ -610,10 +610,10 @@ const TasksAndNotes = () => {
                     {/* Completed Tasks */}
                     <div
                         onClick={() => setActiveTab("tasks")}
-                        className="cursor-pointer rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3.5 sm:p-4 shadow-sm hover:border-emerald-200 dark:border-gray-800 dark:bg-gray-900 transition-all"
+                        className="card p-3.5 sm:p-4 cursor-pointer hover:border-emerald-300 transition-all"
                     >
                         <div className="flex items-center justify-between">
-                            <span className="text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400">
+                            <span className="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">
                                 Completed Tasks
                             </span>
                             <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400">
@@ -621,20 +621,20 @@ const TasksAndNotes = () => {
                             </div>
                         </div>
                         <div className="mt-2 flex items-baseline gap-2">
-                            <span className="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400">
+                            <span className="text-xl sm:text-2xl font-extrabold text-emerald-700 dark:text-emerald-400">
                                 {summary?.completedTasks || 0}
                             </span>
-                            <span className="text-[11px] text-gray-400">Done</span>
+                            <span className="text-[11px] text-slate-400">Done</span>
                         </div>
                     </div>
 
                     {/* Shopping Remaining */}
                     <div
                         onClick={() => setActiveTab("shopping")}
-                        className="cursor-pointer rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3.5 sm:p-4 shadow-sm hover:border-amber-200 dark:border-gray-800 dark:bg-gray-900 transition-all"
+                        className="card p-3.5 sm:p-4 cursor-pointer hover:border-amber-300 transition-all"
                     >
                         <div className="flex items-center justify-between">
-                            <span className="text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400">
+                            <span className="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">
                                 Shopping Items
                             </span>
                             <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-amber-50 text-amber-600 dark:bg-amber-950/40 dark:text-amber-400">
@@ -642,10 +642,10 @@ const TasksAndNotes = () => {
                             </div>
                         </div>
                         <div className="mt-2 flex items-baseline gap-2">
-                            <span className="text-xl sm:text-2xl font-bold text-amber-600 dark:text-amber-400">
+                            <span className="text-xl sm:text-2xl font-extrabold text-amber-700 dark:text-amber-400">
                                 {summary?.pendingShopping || 0}
                             </span>
-                            <span className="text-[11px] text-gray-400">
+                            <span className="text-[11px] text-slate-400">
                                 to buy ({summary?.purchasedShopping || 0} bought)
                             </span>
                         </div>
@@ -654,10 +654,10 @@ const TasksAndNotes = () => {
                     {/* Notes & Info */}
                     <div
                         onClick={() => setActiveTab("notes")}
-                        className="cursor-pointer rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3.5 sm:p-4 shadow-sm hover:border-purple-200 dark:border-gray-800 dark:bg-gray-900 transition-all"
+                        className="card p-3.5 sm:p-4 cursor-pointer hover:border-purple-300 transition-all"
                     >
                         <div className="flex items-center justify-between">
-                            <span className="text-[11px] sm:text-xs font-semibold text-gray-500 dark:text-gray-400">
+                            <span className="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-400">
                                 Notes & Guidelines
                             </span>
                             <div className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-purple-50 text-purple-600 dark:bg-purple-950/40 dark:text-purple-400">
@@ -665,7 +665,7 @@ const TasksAndNotes = () => {
                             </div>
                         </div>
                         <div className="mt-2 flex items-baseline gap-2">
-                            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                            <span className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white">
                                 {summary?.totalNotes || 0}
                             </span>
                             <span className="text-[11px] text-gray-400">Saved</span>
@@ -770,7 +770,7 @@ const TasksAndNotes = () => {
                 {!loading && activeTab === "all" && (
                     <div className="space-y-6">
                         {/* 1. To-Do Tasks Section */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div className="card p-4 sm:p-5">
                             <div className="flex items-center justify-between mb-3.5">
                                 <div className="flex items-center gap-2">
                                     <CheckSquare className="h-4 w-4 text-indigo-600 dark:text-indigo-400" />
@@ -823,7 +823,7 @@ const TasksAndNotes = () => {
                         </div>
 
                         {/* 2. Shopping / Grocery List Section */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div className="card p-4 sm:p-5">
                             <div className="flex items-center justify-between mb-3.5">
                                 <div className="flex items-center gap-2">
                                     <ShoppingCart className="h-4 w-4 text-amber-600 dark:text-amber-400" />
@@ -887,7 +887,7 @@ const TasksAndNotes = () => {
                         </div>
 
                         {/* 3. Notes Section */}
-                        <div className="rounded-2xl border border-gray-100 bg-white p-4 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div className="card p-4 sm:p-5">
                             <div className="flex items-center justify-between mb-3.5">
                                 <div className="flex items-center gap-2">
                                     <FileText className="h-4 w-4 text-purple-600 dark:text-purple-400" />

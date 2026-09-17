@@ -289,11 +289,11 @@ const Settings = () => {
 
     return (
         <Layout>
-            <div className="mb-8">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+            <div className="mb-5">
+                <h1 className="pg-title">
                     System Settings
                 </h1>
-                <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">
+                <p className="pg-subtitle">
                     Configure active years, manage expense categories, and customize Mandal finance books
                 </p>
             </div>
@@ -302,7 +302,7 @@ const Settings = () => {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
                 {/* Left side: Add New Year + Appearance cards */}
                 <div className="space-y-8">
-                    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                    <div className="card p-6">
                         <h3 className="text-md font-bold text-gray-800 dark:text-white mb-1.5">
                             Add Festival Year
                         </h3>
@@ -344,7 +344,7 @@ const Settings = () => {
                     </div>
 
                     {/* Appearance / Theme Card */}
-                    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                    <div className="card p-6">
                         <h3 className="text-md font-bold text-gray-800 dark:text-white mb-1.5">
                             Appearance
                         </h3>
@@ -381,7 +381,7 @@ const Settings = () => {
                     </div>
 
                     {/* Voice Typing / Speech-to-Text Settings Card */}
-                    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                    <div className="card p-6">
                         <div className="flex items-center justify-between mb-1.5">
                             <div className="flex items-center gap-2">
                                 <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">
@@ -634,7 +634,7 @@ const Settings = () => {
                                 Expense Categories
                             </h2>
                         </div>
-                        <p className="text-xs sm:text-sm text-gray-500 mt-1 dark:text-gray-400">
+                        <p className="text-xs sm:pg-subtitle">
                             Manage default system categories and configure custom expense categories for your Mandal
                         </p>
                     </div>
@@ -1123,7 +1123,7 @@ const Settings = () => {
                             </div>
                         ) : (
                             <div className="space-y-4">
-                                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                                <p className="pg-subtitle leading-relaxed">
                                     Are you sure you want to delete category <strong>"{deleteModalData.category.name}"</strong>?
                                     This category is not used by any expenses and will be permanently removed.
                                 </p>

@@ -252,7 +252,7 @@ const PaymentHistoryPanel = ({ donation, onUpdated }) => {
                     <span className={`inline-flex items-center gap-1 rounded-lg px-2.5 py-0.5 text-[11px] font-bold ${statusBadge.cls}`}>
                         {statusBadge.icon} {statusBadge.label}
                     </span>
-                    <span className="text-xs text-gray-500 dark:text-gray-400">
+                    <span className="pg-subtitle">
                         Pledged: <span className="font-bold text-gray-700 dark:text-gray-300">{formatCurrency(donation.amount)}</span>
                     </span>
                     <span className="text-xs text-emerald-700 dark:text-emerald-400">
@@ -950,16 +950,14 @@ const Donations = () => {
             {/* ── Header ─────────────────────────────────────────── */}
             <div className="mb-4 sm:mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                 <div>
-                    <h1 className="text-xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                        Mandal Donations
-                    </h1>
-                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 dark:text-gray-400">
+                    <h1 className="pg-title">Mandal Donations</h1>
+                    <p className="pg-subtitle">
                         Record contributions from resident households &amp; external donors ({total} records)
                     </p>
                 </div>
                 <button
                     onClick={openAddModal}
-                    className="self-start sm:self-auto flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/15 transition-all hover:bg-indigo-700"
+                    className="btn-primary self-start sm:self-auto sm:px-4 sm:py-2.5"
                 >
                     <Plus className="h-4 w-4" />
                     Record Donation
@@ -968,7 +966,7 @@ const Donations = () => {
 
             {/* ── Financial Overview Cards ────────────────────────── */}
             <div className="mb-4 sm:mb-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4">
-                <div className="rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="rounded-xl sm:rounded-2xl border border-slate-200/80 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
                         <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-400">Pledged</span>
                         <div className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-indigo-50 dark:bg-indigo-950/30">
@@ -981,9 +979,9 @@ const Donations = () => {
                     <p className="text-[10px] sm:text-xs text-gray-400 mt-0.5">{total} donations</p>
                 </div>
 
-                <div className="rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="rounded-xl sm:rounded-2xl border border-slate-200/80 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
-                        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-400">Collected</span>
+                        <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">Collected</span>
                         <div className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-950/30">
                             <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-emerald-600 dark:text-emerald-400" />
                         </div>
@@ -996,7 +994,7 @@ const Donations = () => {
                     </p>
                 </div>
 
-                <div className="rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="rounded-xl sm:rounded-2xl border border-slate-200/80 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
                         <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-gray-400">Pending</span>
                         <div className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-950/30">
@@ -1009,7 +1007,7 @@ const Donations = () => {
                     <p className="text-[10px] sm:text-xs text-amber-600/60 dark:text-amber-500/50 mt-0.5">yet to collect</p>
                 </div>
 
-                <div className="rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="rounded-xl sm:rounded-2xl border border-slate-200/80 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
                         <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-amber-400">Cash Collected</span>
                         <div className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-amber-50 dark:bg-amber-950/30">
@@ -1022,7 +1020,7 @@ const Donations = () => {
                     <p className="text-[10px] sm:text-xs text-amber-600/60 dark:text-amber-500/50 mt-0.5">in cash</p>
                 </div>
 
-                <div className="col-span-2 sm:col-span-1 rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="col-span-2 sm:col-span-1 rounded-xl sm:rounded-2xl border border-slate-200/80 bg-white p-3 sm:p-5 shadow-sm dark:border-gray-800 dark:bg-gray-900">
                     <div className="flex items-center justify-between mb-2 sm:mb-3">
                         <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">UPI Collected</span>
                         <div className="flex h-6 w-6 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-950/30">
@@ -1037,7 +1035,7 @@ const Donations = () => {
             </div>
 
             {/* ── Filter Bar ─────────────────────────────────────── */}
-            <div className="mb-4 sm:mb-6 rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-2 sm:p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div className="filter-bar mb-4 sm:mb-6">
                 <div className="grid grid-cols-2 gap-1.5 sm:gap-3 lg:grid-cols-6">
                     {/* Search */}
                     <div className="relative col-span-2 lg:col-span-2">
@@ -1121,7 +1119,7 @@ const Donations = () => {
             </div>
 
             {/* ── Donation List ──────────────────────────────────── */}
-            <div className="rounded-2xl border border-gray-100 bg-white shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+            <div className="card overflow-hidden">
                 {loading ? (
                     <div className="flex h-64 items-center justify-center">
                         <div className="flex flex-col items-center gap-3">
@@ -1141,7 +1139,7 @@ const Donations = () => {
                         <div className="hidden overflow-x-auto md:block">
                             <table className="w-full text-left text-sm border-collapse">
                                 <thead>
-                                    <tr className="bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:bg-gray-800/20 dark:border-gray-800">
+                                    <tr className="tbl-head">
                                         <th className="px-5 py-4">Receipt No.</th>
                                         <th className="px-5 py-4">Donor</th>
                                         <th className="px-5 py-4">Source</th>
@@ -1160,7 +1158,7 @@ const Donations = () => {
                                         return (
                                             <React.Fragment key={don._id}>
                                                 <tr
-                                                    className={`hover:bg-gray-50/30 dark:hover:bg-gray-800/10 cursor-pointer ${isExpanded ? "bg-indigo-50/20 dark:bg-indigo-950/10" : ""}`}
+                                                    className={`tbl-row cursor-pointer ${isExpanded ? "bg-indigo-50/20 dark:bg-indigo-950/10" : ""}`}
                                                     onClick={() => setExpandedId(isExpanded ? null : don._id)}
                                                 >
                                                     <td className="px-5 py-4 font-bold text-xs text-indigo-600 dark:text-indigo-400">

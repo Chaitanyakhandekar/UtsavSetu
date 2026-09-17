@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
     };
 
     return (
-        <div className="flex h-dvh w-full overflow-hidden bg-gray-50 text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+        <div className="flex h-dvh w-full overflow-hidden bg-slate-50/60 text-slate-800 antialiased dark:bg-gray-950 dark:text-gray-100">
             {/* Sidebar Navigation */}
             <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 
@@ -22,7 +22,7 @@ const Layout = ({ children }) => {
 
                 {/* Sub-page Views Container */}
                 <main
-                    className="flex-1 overflow-y-auto px-3.5 py-5 sm:px-6 sm:py-8 pb-24 lg:pb-8"
+                    className="flex-1 overflow-y-auto px-3.5 py-4 sm:px-6 sm:py-6 pb-24 lg:pb-8"
                     style={{ paddingBottom: "max(5.5rem, calc(4.5rem + env(safe-area-inset-bottom)))" }}
                 >
                     <div className="mx-auto w-full max-w-7xl">

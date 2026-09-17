@@ -413,29 +413,24 @@ const Households = () => {
     return (
         <Layout>
             {/* Header */}
-            <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <div className="mb-5 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                        Resident Households
-                    </h1>
-                    <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">
-                        Manage registered flats, resident families and building & wing configurations ({total} households)
+                    <h1 className="pg-title">Resident Households</h1>
+                    <p className="pg-subtitle">Manage registered flats, resident families and building & wing configurations ({total} households)
                     </p>
                 </div>
                 {activeTab === "households" ? (
                     <button
                         onClick={openAddModal}
-                        className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/15 transition-all hover:bg-indigo-700"
-                    >
-                        <Plus className="h-4.5 w-4.5" />
+                        className="btn-primary">
+                    <Plus className="h-4 w-4" />
                         Register Household
                     </button>
                 ) : (
                     <button
                         onClick={openConfigAddModal}
-                        className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/15 transition-all hover:bg-indigo-700"
-                    >
-                        <Plus className="h-4.5 w-4.5" />
+                        className="btn-primary">
+                    <Plus className="h-4 w-4" />
                         Add Building & Wing
                     </button>
                 )}
@@ -476,7 +471,7 @@ const Households = () => {
                             <HomeIcon className="h-4.5 w-4.5" />
                         </div>
                     </div>
-                    <div className="mt-3 text-2xl font-bold text-gray-900 dark:text-white">
+                    <div className="mt-3 pg-title">
                         {overviewLoading ? "..." : overview.totalHouseholds}
                     </div>
                     <p className="mt-1 text-[10px] font-medium text-gray-400">Active resident families</p>
@@ -489,7 +484,7 @@ const Households = () => {
                             <Users className="h-4.5 w-4.5" />
                         </div>
                     </div>
-                    <div className="mt-3 text-2xl font-bold text-gray-900 dark:text-white">
+                    <div className="mt-3 pg-title">
                         {overviewLoading ? "..." : overview.totalResidents}
                     </div>
                     <p className="mt-1 text-[10px] font-medium text-gray-400">Total family members</p>
@@ -502,7 +497,7 @@ const Households = () => {
                             <Building2 className="h-4.5 w-4.5" />
                         </div>
                     </div>
-                    <div className="mt-3 text-2xl font-bold text-gray-900 dark:text-white">
+                    <div className="mt-3 pg-title">
                         {overviewLoading ? "..." : `${overview.totalRegisteredFlats} / ${overview.totalExpectedFlats}`}
                     </div>
                     <p className="mt-1 text-[10px] font-medium text-gray-400">Registered vs expected flats</p>
@@ -515,7 +510,7 @@ const Households = () => {
                             <KeyRound className="h-4.5 w-4.5" />
                         </div>
                     </div>
-                    <div className="mt-3 text-2xl font-bold text-gray-900 dark:text-white">
+                    <div className="mt-3 pg-title">
                         {overviewLoading ? "..." : overview.remainingFlats}
                     </div>
                     <p className="mt-1 text-[10px] font-medium text-amber-600 dark:text-amber-400">Remaining flats not yet registered</p>
@@ -587,7 +582,7 @@ const Households = () => {
                     </div>
 
                     {/* Households Table */}
-                    <div className="rounded-2xl border border-gray-100 bg-white shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+                    <div className="card overflow-hidden">
                         {loading ? (
                             <div className="flex h-64 items-center justify-center">
                                 <div className="flex flex-col items-center gap-3">
@@ -606,7 +601,7 @@ const Households = () => {
                                 <div className="hidden overflow-x-auto md:block">
                                     <table className="w-full text-left text-sm border-collapse">
                                         <thead>
-                                            <tr className="bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:bg-gray-800/20 dark:border-gray-800">
+                                            <tr className="tbl-head">
                                                 <th className="px-6 py-4">Flat</th>
                                                 <th className="px-6 py-4">Head of Family</th>
                                                 <th className="px-6 py-4">Phone</th>
@@ -615,9 +610,9 @@ const Households = () => {
                                                 <th className="px-6 py-4 text-center">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="divide-y divide-gray-100 dark:divide-gray-800/40">
+                                        <tbody>
                                             {households.map((h) => (
-                                                <tr key={h._id} className="hover:bg-gray-50/30 dark:hover:bg-gray-800/10">
+                                                <tr key={h._id} className="tbl-row">
                                                     <td className="px-6 py-4.5">
                                                         <div className="font-bold text-xs text-indigo-600 dark:text-indigo-400">
                                                             B{h.building} · Wing {h.wing} · Flat {h.flatNumber}
@@ -773,13 +768,13 @@ const Households = () => {
             ) : (
                 <>
                     {/* Building Configuration Details */}
-                    <div className="rounded-2xl border border-gray-100 bg-white shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
-                        <div className="flex items-center justify-between border-b border-gray-100 px-6 py-5 dark:border-gray-800">
+                    <div className="card overflow-hidden">
+                        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-5 dark:border-gray-800">
                             <div>
-                                <h3 className="text-md font-bold text-gray-800 dark:text-white">Building & Wing Configuration</h3>
-                                <p className="text-xs text-gray-400 mt-0.5">Configure flat ranges (start & end) per building & wing to auto-generate flats and track remaining unregistered flats</p>
+                                <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Building & Wing Configuration</h3>
+                                <p className="pg-subtitle">Configure flat ranges (start & end) per building & wing to auto-generate flats and track remaining unregistered flats</p>
                             </div>
-                            <span className="text-xs font-semibold text-gray-400">
+                            <span className="text-xs font-semibold text-slate-400">
                                 {overview.totalExpectedFlats} expected · {overview.totalRegisteredFlats} registered · {overview.remainingFlats} remaining
                             </span>
                         </div>
@@ -802,7 +797,7 @@ const Households = () => {
                                 <div className="hidden overflow-x-auto md:block">
                                     <table className="w-full text-left text-sm border-collapse">
                                         <thead>
-                                            <tr className="bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:bg-gray-800/20 dark:border-gray-800">
+                                            <tr className="tbl-head">
                                                 <th className="px-6 py-4">Building & Wing</th>
                                                 <th className="px-6 py-4">Flats (Ranges)</th>
                                                 <th className="px-6 py-4">Registered</th>
@@ -812,7 +807,7 @@ const Households = () => {
                                                 <th className="px-6 py-4 text-center">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody className="divide-y divide-gray-100 dark:divide-gray-800/40">
+                                        <tbody>
                                             {configs.map((config) => {
                                                 const stats = wingStatsMap[`${config.building}-${config.wing}`] || {
                                                     registeredFlats: 0,
@@ -821,7 +816,7 @@ const Households = () => {
                                                 };
                                                 const unregistered = unregisteredMap[`${config.building}-${config.wing}`] || [];
                                                 return (
-                                                    <tr key={config._id} className="hover:bg-gray-50/30 dark:hover:bg-gray-800/10">
+                                                    <tr key={config._id} className="tbl-row">
                                                         <td className="px-6 py-4.5 font-bold text-xs text-indigo-600 dark:text-indigo-400">
                                                             Building {config.building} · Wing {config.wing}
                                                         </td>
