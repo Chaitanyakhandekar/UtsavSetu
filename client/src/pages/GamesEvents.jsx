@@ -229,10 +229,10 @@ const GamesEvents = () => {
                                 <Trophy className="h-5 w-5 sm:h-6 sm:w-6" />
                             </div>
                             <div>
-                                <h1 className="text-xl sm:text-2xl font-black tracking-tight text-gray-900 dark:text-white">
+                                <h1 className="pg-title">
                                     Games & Events
                                 </h1>
-                                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                                <p className="pg-subtitle">
                                     Competitions, categories, winners & festival awards • Festival {selectedYear}
                                 </p>
                             </div>
@@ -399,7 +399,7 @@ const GamesEvents = () => {
                         {/* Pagination if multiple pages */}
                         {totalPages > 1 && (
                             <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
-                                <p className="text-xs text-gray-500 dark:text-gray-400">
+                                <p className="pg-subtitle">
                                     Page <strong className="text-gray-800 dark:text-gray-200">{page}</strong> of <strong className="text-gray-800 dark:text-gray-200">{totalPages}</strong>
                                 </p>
                                 <div className="flex items-center gap-1.5">

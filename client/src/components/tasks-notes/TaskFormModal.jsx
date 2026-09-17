@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, CheckSquare, Calendar, AlertCircle } from "lucide-react";
 import toast from "react-hot-toast";
+import { VoiceInput, VoiceTextarea } from "../VoiceInput.jsx";
 
 const TaskFormModal = ({ isOpen, onClose, onSubmit, editingTask, isSubmitting }) => {
     const [title, setTitle] = useState("");
@@ -83,7 +84,7 @@ const TaskFormModal = ({ isOpen, onClose, onSubmit, editingTask, isSubmitting })
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Task Title <span className="text-rose-500">*</span>
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -100,7 +101,7 @@ const TaskFormModal = ({ isOpen, onClose, onSubmit, editingTask, isSubmitting })
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Description (Optional)
                             </label>
-                            <textarea
+                            <VoiceTextarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 rows={3}

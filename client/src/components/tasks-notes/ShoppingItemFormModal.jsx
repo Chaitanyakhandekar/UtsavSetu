@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, ShoppingCart, Sparkles } from "lucide-react";
 import toast from "react-hot-toast";
+import { VoiceInput } from "../VoiceInput.jsx";
 
 const UNIT_OPTIONS = [
     { value: "kg", label: "kg (Kilogram)" },
@@ -144,7 +145,7 @@ const ShoppingItemFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Item Name <span className="text-rose-500">*</span>
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={itemName}
                                 onChange={(e) => setItemName(e.target.value)}
@@ -196,7 +197,7 @@ const ShoppingItemFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Note / Brand / Vendor (Optional)
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={note}
                                 onChange={(e) => setNote(e.target.value)}

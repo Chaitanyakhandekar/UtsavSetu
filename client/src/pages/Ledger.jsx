@@ -89,11 +89,9 @@ const Ledger = () => {
     return (
         <Layout>
             {/* Header section */}
-            <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
-                    Transaction Ledger
-                </h1>
-                <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">
+            <div className="mb-5">
+                <h1 className="pg-title">Transaction Ledger</h1>
+                <p className="pg-subtitle">
                     A unified chronological ledger tracking every cash and online transaction for {selectedYear}
                 </p>
             </div>
@@ -144,7 +142,7 @@ const Ledger = () => {
             </div>
 
             {/* List Table Container */}
-            <div className="rounded-2xl border border-gray-100 bg-white shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+            <div className="card">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 p-4 sm:p-6 dark:border-gray-800">
                     <div className="flex items-center gap-2">
                         <BookOpen className="h-5 w-5 text-indigo-500" />
@@ -195,7 +193,7 @@ const Ledger = () => {
                         <div className="hidden overflow-x-auto md:block">
                             <table className="w-full text-left text-sm border-collapse">
                                 <thead>
-                                    <tr className="bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:bg-gray-800/20 dark:border-gray-800">
+                                    <tr className="tbl-head">
                                         <th className="px-6 py-4">Ref/Receipt</th>
                                         <th className="px-6 py-4">Transaction Details</th>
                                         <th className="px-6 py-4">Flow</th>

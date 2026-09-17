@@ -141,25 +141,25 @@ const BulkImport = () => {
     };
 
     const statCard = (label, value, colorClass) => (
-        <div className="flex flex-col items-center rounded-xl border border-gray-100 bg-gray-50/50 px-4 py-3 dark:border-gray-800 dark:bg-gray-950">
-            <span className={`text-2xl font-bold ${colorClass}`}>{value}</span>
-            <span className="mt-0.5 text-[11px] font-bold uppercase tracking-wider text-gray-400">{label}</span>
+        <div className="flex flex-col items-center rounded-xl border border-slate-200/70 bg-slate-50/50 px-4 py-3 dark:border-gray-800 dark:bg-gray-800/40">
+            <span className={`text-2xl font-extrabold ${colorClass}`}>{value}</span>
+            <span className="mt-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-400">{label}</span>
         </div>
     );
 
     return (
         <Layout>
-            <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <div className="mb-6 sm:mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">Bulk Import</h1>
-                    <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">
+                    <h1 className="pg-title sm:text-2xl">Bulk Import</h1>
+                    <p className="pg-subtitle">
                         Upload buildings, households, donations and expenses from Excel or CSV files
                     </p>
                 </div>
                 {selectedType && (
                     <button
                         onClick={resetAll}
-                        className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-950"
+                        className="btn-secondary self-start sm:self-auto"
                     >
                         <RotateCcw className="h-4 w-4" />
                         Start Over
@@ -169,12 +169,12 @@ const BulkImport = () => {
 
             {/* Stepper */}
             {selectedType && (
-                <div className="mb-6 flex items-center gap-2 overflow-x-auto rounded-2xl border border-gray-100 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="mb-6 flex items-center gap-2 overflow-x-auto card p-4">
                     {STEPS.map((step, index) => (
                         <React.Fragment key={step}>
-                            {index > 0 && <div className={`h-px w-6 shrink-0 sm:w-10 ${index <= currentStep ? "bg-indigo-500" : "bg-gray-200 dark:bg-gray-800"}`} />}
-                            <span className={`flex shrink-0 items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider ${index <= currentStep ? "text-indigo-600 dark:text-indigo-400" : "text-gray-400"}`}>
-                                <span className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] ${index <= currentStep ? "bg-indigo-600 text-white" : "bg-gray-100 text-gray-400 dark:bg-gray-800"}`}>
+                            {index > 0 && <div className={`h-px w-6 shrink-0 sm:w-10 ${index <= currentStep ? "bg-indigo-500" : "bg-slate-200 dark:bg-gray-800"}`} />}
+                            <span className={`flex shrink-0 items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider ${index <= currentStep ? "text-indigo-600 dark:text-indigo-400" : "text-slate-400"}`}>
+                                <span className={`flex h-5 w-5 items-center justify-center rounded-full text-[10px] ${index <= currentStep ? "bg-indigo-600 text-white" : "bg-slate-100 text-slate-400 dark:bg-gray-800"}`}>
                                     {index + 1}
                                 </span>
                                 {step}
@@ -193,17 +193,17 @@ const BulkImport = () => {
                         <button
                             key={typeEntry.key}
                             onClick={() => handleSelectType(typeEntry.key)}
-                            className={`flex items-start gap-3 rounded-2xl border p-5 text-left shadow-sm transition-all ${isSelected
-                                ? "border-indigo-500 bg-indigo-50/50 ring-1 ring-indigo-500 dark:bg-indigo-950/20"
-                                : "border-gray-100 bg-white hover:border-indigo-200 hover:shadow-md dark:border-gray-800 dark:bg-gray-900 dark:hover:border-indigo-900"
+                            className={`flex items-start gap-3 rounded-2xl border p-5 text-left transition-all ${isSelected
+                                ? "border-indigo-600 bg-indigo-50/50 shadow-sm ring-1 ring-indigo-500 dark:bg-indigo-950/20"
+                                : "card hover:border-indigo-200 hover:shadow-md dark:hover:border-indigo-900"
                             }`}
                         >
                             <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${isSelected ? "bg-indigo-600 text-white" : "bg-indigo-50 text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400"}`}>
                                 <Icon className="h-5 w-5" />
                             </div>
                             <div>
-                                <p className="text-sm font-bold text-gray-800 dark:text-white">{typeEntry.label}</p>
-                                <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{typeEntry.description}</p>
+                                <p className="text-sm font-bold text-slate-800 dark:text-white">{typeEntry.label}</p>
+                                <p className="mt-0.5 pg-subtitle">{typeEntry.description}</p>
                             </div>
                         </button>
                     );
@@ -213,25 +213,25 @@ const BulkImport = () => {
             {/* Step 2 - Template download + file upload */}
             {selectedType && (
                 <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-2">
-                    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
-                        <h3 className="text-md font-bold text-gray-800 dark:text-white mb-1.5">
+                    <div className="card p-5 sm:p-6">
+                        <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-white mb-1.5">
                             Step 2: Download Template
                         </h3>
-                        <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">
+                        <p className="mb-4 pg-subtitle">
                             Download the {activeType.label} template and fill it with your data. Worksheets
                             (Data / Sample Data / Instructions) explain every column.
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <button
                                 onClick={() => handleTemplateDownload("xlsx")}
-                                className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/15 transition hover:bg-indigo-700"
+                                className="btn-primary"
                             >
                                 <FileSpreadsheet className="h-4 w-4" />
                                 Excel (.xlsx)
                             </button>
                             <button
                                 onClick={() => handleTemplateDownload("csv")}
-                                className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-600 hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300 dark:hover:bg-gray-800"
+                                className="btn-secondary"
                             >
                                 <FileDown className="h-4 w-4" />
                                 CSV (.csv)
@@ -239,11 +239,11 @@ const BulkImport = () => {
                         </div>
                     </div>
 
-                    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                    <div className="card p-5 sm:p-6">
                         <h3 className="text-md font-bold text-gray-800 dark:text-white mb-1.5">
                             Upload File
                         </h3>
-                        <p className="mb-4 text-xs text-gray-500 dark:text-gray-400">
+                        <p className="mb-4 pg-subtitle">
                             Upload your completed Excel or CSV file. It is parsed and validated
                             immediately - nothing is written to the database until you confirm.
                         </p>
@@ -282,21 +282,21 @@ const BulkImport = () => {
 
             {/* Step 3 - Preview panel */}
             {preview && !result && (
-                <div className="mt-6 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                <div className="mt-6 card p-5 sm:p-6">
                     <div className="mb-4 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                         <div>
-                            <h3 className="text-md font-bold text-gray-800 dark:text-white">
+                            <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-white">
                                 Validation Preview
                             </h3>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
-                                File: <span className="font-semibold">{preview.fileName}</span> - review the
+                            <p className="pg-subtitle">
+                                File: <span className="font-semibold text-slate-700 dark:text-slate-200">{preview.fileName}</span> - review the
                                 result below. Errors are NOT imported.
                             </p>
                         </div>
                         <button
                             onClick={handleErrorReport}
                             disabled={preview.errors.length === 0}
-                            className="flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-600 hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-gray-800 dark:bg-gray-950 dark:text-gray-300"
+                            className="btn-secondary self-start sm:self-auto"
                         >
                             <FileDown className="h-4 w-4" />
                             Download Error Report
@@ -304,7 +304,7 @@ const BulkImport = () => {
                     </div>
 
                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-                        {statCard("Total Rows", preview.totalRows, "text-gray-800 dark:text-white")}
+                        {statCard("Total Rows", preview.totalRows, "text-slate-900 dark:text-white")}
                         {statCard("Valid", preview.validRows, "text-emerald-600 dark:text-emerald-400")}
                         {statCard("Updates", preview.updatedRows, "text-indigo-600 dark:text-indigo-400")}
                         {statCard("Duplicates", preview.duplicateRows, "text-amber-600 dark:text-amber-400")}
@@ -324,15 +324,15 @@ const BulkImport = () => {
                     )}
 
                     {preview.invalidRows === 0 ? (
-                        <div className="mt-4 flex items-center gap-2 rounded-xl bg-emerald-50 p-4 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/20 dark:text-emerald-400">
+                        <div className="mt-4 flex items-center gap-2 rounded-xl bg-emerald-50/80 border border-emerald-200/60 p-4 text-xs font-semibold text-emerald-700 dark:bg-emerald-950/20 dark:border-emerald-900/40 dark:text-emerald-400">
                             <CheckCircle2 className="h-4 w-4 shrink-0" />
                             Every row is valid and ready to import.
                         </div>
                     ) : preview.errors.length > 0 && (
-                        <div className="mt-4 overflow-hidden rounded-xl border border-gray-100 dark:border-gray-800">
+                        <div className="mt-4 overflow-hidden rounded-xl border border-slate-200/80 dark:border-gray-800">
                             <div className="max-h-72 overflow-y-auto">
-                                <table className="min-w-full divide-y divide-gray-100 dark:divide-gray-800">
-                                    <thead className="sticky top-0 bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 dark:bg-gray-800/20">
+                                <table className="min-w-full divide-y divide-slate-100 dark:divide-gray-800">
+                                    <thead className="sticky top-0 tbl-head">
                                         <tr>
                                             <th className="px-4 py-3">Row</th>
                                             <th className="px-4 py-3">Field</th>
@@ -341,18 +341,18 @@ const BulkImport = () => {
                                     </thead>
                                     <tbody>
                                         {preview.errors.map((error, index) => (
-                                            <tr key={index} className="border-t border-gray-100 text-xs dark:border-gray-800">
-                                                <td className="px-4 py-3 font-bold text-gray-700 dark:text-gray-300">Row {error.row}</td>
+                                            <tr key={index} className="tbl-row text-xs">
+                                                <td className="px-4 py-3 font-bold text-slate-700 dark:text-slate-300">Row {error.row}</td>
                                                 <td className="px-4 py-3">
                                                     {error.fieldLabel ? (
-                                                        <span className="inline-flex items-center rounded-lg bg-rose-50 px-2.5 py-0.5 text-xs font-semibold text-rose-700 dark:bg-rose-950/20 dark:text-rose-400">
+                                                        <span className="badge-rose">
                                                             {error.fieldLabel}
                                                         </span>
                                                     ) : (
-                                                        <span className="text-gray-400">-</span>
+                                                        <span className="text-slate-400">-</span>
                                                     )}
                                                 </td>
-                                                <td className="px-4 py-3 text-gray-600 dark:text-gray-400">{error.message}</td>
+                                                <td className="px-4 py-3 text-slate-600 dark:text-slate-400">{error.message}</td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -364,17 +364,15 @@ const BulkImport = () => {
                     <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-end">
                         <button
                             onClick={resetAll}
-                            className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-500 hover:bg-gray-50 sm:w-auto w-full dark:border-gray-800 dark:bg-gray-950"
+                            className="btn-secondary w-full sm:w-auto"
                         >
                             Cancel
                         </button>
                         <button
                             onClick={handleConfirm}
                             disabled={importing || preview.data.length === 0}
-                            className={`flex w-full items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold text-white shadow-md transition disabled:cursor-not-allowed disabled:opacity-40 sm:w-auto ${
-                                confirming
-                                    ? "bg-emerald-600 shadow-emerald-600/15 hover:bg-emerald-700"
-                                    : "bg-indigo-600 shadow-indigo-600/15 hover:bg-indigo-700"
+                            className={`btn-primary w-full sm:w-auto ${
+                                confirming ? "bg-emerald-600 hover:bg-emerald-700" : ""
                             }`}
                         >
                             {importing ? (
@@ -407,7 +405,7 @@ const BulkImport = () => {
                         </div>
                         <div>
                             <h3 className="text-md font-bold text-gray-800 dark:text-white">Import Completed</h3>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                            <p className="pg-subtitle">
                                 The imported records are now part of the totals, balances, flat and
                                 resident statistics and Mahaprasad calculations. Dashboard statistics
                                 were refreshed automatically.

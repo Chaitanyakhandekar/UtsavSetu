@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Trophy, Calendar, Clock, MapPin, Users, FileText, Check } from "lucide-react";
 import toast from "react-hot-toast";
+import { VoiceInput, VoiceTextarea } from "../VoiceInput.jsx";
 
 const GameFormModal = ({
     isOpen,
@@ -106,7 +107,7 @@ const GameFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Game / Competition Name <span className="text-rose-500">*</span>
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -183,7 +184,7 @@ const GameFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Location / Venue (Optional)
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={location}
                                 onChange={(e) => setLocation(e.target.value)}
@@ -197,7 +198,7 @@ const GameFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Description / Rules (Optional)
                             </label>
-                            <textarea
+                            <VoiceTextarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 rows={3}

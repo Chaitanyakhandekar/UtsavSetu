@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Layout from "../components/Layout.jsx";
 import { externalDonorApi } from "../api/externalDonor.api.js";
 import { useMandalStore } from "../store/useMandalStore.js";
+import { VoiceInput, VoiceTextarea } from "../components/VoiceInput.jsx";
 import {
     Plus,
     Search,
@@ -253,16 +254,16 @@ const ExternalDonors = () => {
             {/* Header */}
             <div className="mb-4 sm:mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                 <div>
-                    <h1 className="text-xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                    <h1 className="pg-title">
                         External Donors
                     </h1>
-                    <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1 dark:text-gray-400">
+                    <p className="pg-subtitle">
                         Non-resident individuals, businesses, shops, organizations & well-wishers ({total} donors)
                     </p>
                 </div>
                 <button
                     onClick={openAddModal}
-                    className="self-start sm:self-auto flex items-center gap-1.5 rounded-xl bg-indigo-600 px-3.5 py-2 sm:px-4 sm:py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/15 transition-all hover:bg-indigo-700"
+                    className="self-start sm:self-auto btn-primary"
                 >
                     <Plus className="h-4 w-4" />
                     Add Donor
@@ -270,7 +271,7 @@ const ExternalDonors = () => {
             </div>
 
             {/* Filter Bar (Compact & Mobile-Optimized) */}
-            <div className="mb-4 sm:mb-6 rounded-xl sm:rounded-2xl border border-gray-100 bg-white p-2 sm:p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div className="filter-bar mb-4 sm:mb-6">
                 <div className="grid grid-cols-2 gap-1.5 sm:gap-3 md:grid-cols-4">
                     <div className="relative col-span-2">
                         <Search className="absolute top-2 left-2 h-3 w-3 text-gray-400 sm:top-2.5 sm:left-2.5 sm:h-3.5 sm:w-3.5" />
@@ -329,7 +330,7 @@ const ExternalDonors = () => {
             </div>
 
             {/* Donors Table */}
-            <div className="rounded-2xl border border-gray-100 bg-white shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+            <div className="card">
                 {loading ? (
                     <div className="flex h-64 items-center justify-center">
                         <div className="flex flex-col items-center gap-3">
@@ -348,7 +349,7 @@ const ExternalDonors = () => {
                         <div className="hidden overflow-x-auto md:block">
                             <table className="w-full text-left text-sm border-collapse">
                                 <thead>
-                                    <tr className="bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:bg-gray-800/20 dark:border-gray-800">
+                                    <tr className="tbl-head">
                                         <th className="px-6 py-4">Donor</th>
                                         <th className="px-6 py-4">Type</th>
                                         <th className="px-6 py-4">Phone</th>
@@ -359,9 +360,9 @@ const ExternalDonors = () => {
                                         <th className="px-6 py-4 text-center">Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody className="divide-y divide-gray-100 dark:divide-gray-800/40">
+                                <tbody>
                                     {donors.map((donor) => (
-                                        <tr key={donor._id} className="hover:bg-gray-50/30 dark:hover:bg-gray-800/10">
+                                        <tr key={donor._id} className="tbl-row">
                                             <td className="px-6 py-4.5">
                                                 <div className="font-semibold text-gray-700 dark:text-gray-300">
                                                     {donor.donorName}
@@ -562,15 +563,15 @@ const ExternalDonors = () => {
 
             {/* Donor Form Modal */}
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm px-4">
-                    <div className="w-full max-w-lg rounded-3xl bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-200 dark:bg-gray-900 dark:border dark:border-gray-800">
-                        <div className="flex items-center justify-between border-b border-gray-100 p-6 dark:border-gray-800">
-                            <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+                <div className="modal-overlay px-4">
+                    <div className="modal-panel max-w-lg">
+                        <div className="modal-header">
+                            <h3 className="text-base font-bold text-slate-900 dark:text-white">
                                 {editingId ? "Edit External Donor" : "Add External Donor"}
                             </h3>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="rounded-lg p-1 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                                className="rounded-lg p-1 text-slate-400 hover:bg-slate-50 dark:hover:bg-gray-800"
                             >
                                 <X className="h-5 w-5" />
                             </button>
@@ -580,7 +581,7 @@ const ExternalDonors = () => {
                             <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Donor Name *</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="donorName"
                                         required
@@ -620,7 +621,7 @@ const ExternalDonors = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Organization / Business Name</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="organizationName"
                                         value={formData.organizationName}
@@ -632,7 +633,7 @@ const ExternalDonors = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Address</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="address"
                                         value={formData.address}
@@ -644,14 +645,14 @@ const ExternalDonors = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Note / Remarks</label>
-                                    <textarea
+                                    <VoiceTextarea
                                         name="note"
                                         value={formData.note}
                                         onChange={handleInputChange}
                                         rows="2"
                                         placeholder="Any remarks about this donor..."
-                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950"
-                                    ></textarea>
+                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950 resize-none"
+                                    />
                                 </div>
 
                                 {editingId && (
@@ -669,18 +670,18 @@ const ExternalDonors = () => {
                                 )}
                             </div>
 
-                            <div className="flex flex-col-reverse gap-2 border-t border-gray-100 bg-gray-50 px-6 py-4 rounded-b-3xl sm:flex-row sm:items-center sm:justify-end sm:gap-3 dark:border-gray-800 dark:bg-gray-950">
+                            <div className="modal-footer">
                                 <button
                                     type="button"
                                     onClick={() => setIsOpen(false)}
-                                    className="w-full rounded-xl border border-gray-200 bg-white py-2.5 px-4 text-xs font-semibold text-gray-500 hover:bg-gray-50 sm:w-auto dark:border-gray-800 dark:bg-gray-900"
+                                    className="btn-secondary w-full sm:w-auto"
                                 >
                                     Cancel
                                 </button>
                                 <button
                                     type="submit"
                                     disabled={formLoading}
-                                    className="flex w-full items-center justify-center gap-1.5 rounded-xl bg-indigo-600 py-2.5 px-4 text-xs font-semibold text-white hover:bg-indigo-700 disabled:opacity-50 sm:w-auto"
+                                    className="btn-primary w-full sm:w-auto"
                                 >
                                     {formLoading ? (
                                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
@@ -696,15 +697,15 @@ const ExternalDonors = () => {
 
             {/* Donation History Modal */}
             {historyDonor && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/40 backdrop-blur-sm px-4">
-                    <div className="w-full max-w-2xl rounded-3xl bg-white shadow-2xl animate-in fade-in zoom-in-95 duration-200 dark:bg-gray-900 dark:border dark:border-gray-800">
-                        <div className="flex items-center justify-between border-b border-gray-100 p-6 dark:border-gray-800">
-                            <h3 className="text-lg font-bold text-gray-800 dark:text-white">
+                <div className="modal-overlay px-4">
+                    <div className="modal-panel max-w-2xl">
+                        <div className="modal-header">
+                            <h3 className="text-base font-bold text-slate-900 dark:text-white">
                                 Donation History
                             </h3>
                             <button
                                 onClick={() => setHistoryDonor(null)}
-                                className="rounded-lg p-1 text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800"
+                                className="rounded-lg p-1 text-slate-400 hover:bg-slate-50 dark:hover:bg-gray-800"
                             >
                                 <X className="h-5 w-5" />
                             </button>
@@ -712,17 +713,17 @@ const ExternalDonors = () => {
 
                         <div className="p-6">
                             {/* Donor Summary */}
-                            <div className="mb-5 rounded-2xl border border-gray-100 bg-gray-50/50 p-5 dark:border-gray-800 dark:bg-gray-950">
+                            <div className="mb-5 rounded-2xl border border-slate-200/60 bg-slate-50/50 p-4 sm:p-5 dark:border-gray-800 dark:bg-gray-800/30">
                                 <div className="flex flex-wrap items-center justify-between gap-4">
                                     <div>
                                         <div className="flex items-center gap-2">
                                             <Building2 className="h-5 w-5 text-indigo-500" />
-                                            <span className="text-lg font-bold text-gray-800 dark:text-white">{historyDonor.donorName}</span>
+                                            <span className="text-lg font-bold text-slate-900 dark:text-white">{historyDonor.donorName}</span>
                                             <span className="inline-flex items-center rounded-lg bg-sky-50 px-2 py-0.5 text-[10px] font-semibold text-sky-700 dark:bg-sky-950/20 dark:text-sky-400">
                                                 {historyDonor.donorType}
                                             </span>
                                         </div>
-                                        <p className="text-xs text-gray-400 mt-1">
+                                        <p className="text-xs text-slate-400 mt-1">
                                             {historyDonor.organizationName || "—"} · {historyDonor.phone || "—"} · {historyDonor.address || "—"}
                                         </p>
                                     </div>
@@ -730,7 +731,7 @@ const ExternalDonors = () => {
                                         <div className="text-xl font-bold text-emerald-600 dark:text-emerald-400">
                                             {formatCurrency(historyStats.totalDonated)}
                                         </div>
-                                        <div className="text-[10px] font-medium text-gray-400">
+                                        <div className="text-[10px] font-medium text-slate-400">
                                             Total donated in {selectedYear} · {historyStats.donationCount} donations
                                         </div>
                                     </div>
@@ -744,25 +745,25 @@ const ExternalDonors = () => {
                                 </div>
                             ) : historyDonations.length === 0 ? (
                                 <div className="flex flex-col items-center justify-center py-12 text-center">
-                                    <HandCoins className="h-10 w-10 text-gray-300 mb-2" />
-                                    <p className="text-sm font-semibold text-gray-400">No donations recorded for {selectedYear}</p>
-                                    <p className="text-xs text-gray-400 mt-1">Donations from this donor will appear here.</p>
+                                    <HandCoins className="h-10 w-10 text-slate-300 mb-2" />
+                                    <p className="text-sm font-semibold text-slate-400">No donations recorded for {selectedYear}</p>
+                                    <p className="text-xs text-slate-400 mt-1">Donations from this donor will appear here.</p>
                                 </div>
                             ) : (
                                 <>
-                                    <div className="max-h-[45vh] overflow-y-auto rounded-xl border border-gray-100 dark:border-gray-800">
+                                    <div className="max-h-[45vh] overflow-y-auto rounded-xl border border-slate-200/80 dark:border-gray-800">
                                         <table className="w-full text-left text-sm border-collapse">
                                             <thead className="sticky top-0">
-                                                <tr className="bg-gray-50/50 text-[11px] font-bold uppercase tracking-wider text-gray-400 border-b border-gray-100 dark:bg-gray-800/20 dark:border-gray-800">
+                                                <tr className="tbl-head">
                                                     <th className="px-5 py-3">Receipt</th>
                                                     <th className="px-5 py-3">Method</th>
                                                     <th className="px-5 py-3">Date</th>
                                                     <th className="px-5 py-3 text-right">Amount</th>
                                                 </tr>
                                             </thead>
-                                            <tbody className="divide-y divide-gray-100 dark:divide-gray-800/40">
+                                            <tbody>
                                                 {historyDonations.map((don) => (
-                                                    <tr key={don._id} className="hover:bg-gray-50/30 dark:hover:bg-gray-800/10">
+                                                    <tr key={don._id} className="tbl-row">
                                                         <td className="px-5 py-3.5 font-bold text-xs text-indigo-600 dark:text-indigo-400">
                                                             {don.receiptNumber}
                                                         </td>

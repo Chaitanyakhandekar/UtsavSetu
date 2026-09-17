@@ -109,37 +109,39 @@ const Mahaprasad = () => {
     return (
         <Layout>
             {/* Header */}
-            <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+            <div className="mb-6 sm:mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white sm:text-3xl">
+                    <h1 className="pg-title sm:text-2xl">
                         Mahaprasad Planning
                     </h1>
-                    <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">
+                    <p className="pg-subtitle">
                         Plan Mahaprasad meals for festival year {selectedYear} based on resident household population
                     </p>
                 </div>
                 <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex items-center gap-1.5 rounded-xl bg-indigo-600 px-4 py-2.5 text-xs font-semibold text-white shadow-md shadow-indigo-600/15 transition-all hover:bg-indigo-700 disabled:opacity-50"
+                    className="btn-primary self-start sm:self-auto"
                 >
                     {saving ? (
                         <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
                     ) : (
-                        <Save className="h-4.5 w-4.5" />
+                        <Save className="h-4 w-4" />
                     )}
                     Save Planning
                 </button>
             </div>
 
             {/* External donors exclusion notice */}
-            <div className="mb-8 flex items-start gap-3 rounded-2xl border border-amber-200 bg-amber-50/70 p-5 dark:border-amber-900/40 dark:bg-amber-950/20">
-                <ShieldCheck className="h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400" />
+            <div className="mb-6 flex items-start gap-3 rounded-2xl border border-amber-200/80 bg-amber-50/60 p-4 sm:p-5 dark:border-amber-900/40 dark:bg-amber-950/20">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">
+                    <ShieldCheck className="h-4 w-4" />
+                </div>
                 <div>
-                    <p className="text-sm font-bold text-amber-800 dark:text-amber-300">
+                    <p className="text-xs sm:text-sm font-bold text-amber-900 dark:text-amber-200">
                         External Donors are excluded from this calculation
                     </p>
-                    <p className="text-xs text-amber-700/80 dark:text-amber-400/80 mt-0.5">
+                    <p className="text-[11px] sm:text-xs text-amber-700/90 dark:text-amber-400/90 mt-0.5 leading-relaxed">
                         Mahaprasad planning uses ONLY registered resident households and their family member counts.
                         Shops, businesses, organizations and well-wishers are never counted in the population.
                     </p>
@@ -157,35 +159,35 @@ const Mahaprasad = () => {
                 <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
                     {/* Population & Calculation Card */}
                     <div className="lg:col-span-2">
-                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+                        <div className="card p-5 sm:p-6">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">
                                     <Calculator className="h-5 w-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-md font-bold text-gray-800 dark:text-white">Resident Population & Meal Calculation</h3>
-                                    <p className="text-xs text-gray-400 mt-0.5">Configurable percentages, computed and saved per festival year</p>
+                                    <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-white">Resident Population & Meal Calculation</h3>
+                                    <p className="pg-subtitle">Configurable percentages, computed and saved per festival year</p>
                                 </div>
                             </div>
 
                             {/* Population summary */}
                             <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-4">
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50/50 p-4 text-center sm:p-5 dark:border-gray-800 dark:bg-gray-950">
-                                    <HomeIcon className="mx-auto h-6 w-6 text-indigo-500 mb-2" />
-                                    <div className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{planning.registeredHouseholds}</div>
-                                    <div className="text-[10px] font-bold uppercase tracking-wider text-gray-400 mt-1">Registered Households</div>
+                                <div className="rounded-xl border border-slate-200/60 bg-slate-50/60 p-4 text-center sm:p-5 dark:border-gray-800 dark:bg-gray-800/40">
+                                    <HomeIcon className="mx-auto h-5 w-5 text-indigo-600 dark:text-indigo-400 mb-2" />
+                                    <div className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{planning.registeredHouseholds}</div>
+                                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-1">Registered Households</div>
                                 </div>
-                                <div className="rounded-2xl border border-gray-100 bg-gray-50/50 p-4 text-center sm:p-5 dark:border-gray-800 dark:bg-gray-950">
-                                    <Users className="mx-auto h-6 w-6 text-violet-500 mb-2" />
-                                    <div className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">{planning.totalPeople}</div>
-                                    <div className="text-[11px] font-bold uppercase tracking-wider text-gray-400 mt-1">Total Resident People</div>
+                                <div className="rounded-xl border border-slate-200/60 bg-slate-50/60 p-4 text-center sm:p-5 dark:border-gray-800 dark:bg-gray-800/40">
+                                    <Users className="mx-auto h-5 w-5 text-violet-600 dark:text-violet-400 mb-2" />
+                                    <div className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{planning.totalPeople}</div>
+                                    <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mt-1">Total Resident People</div>
                                 </div>
                             </div>
 
                             {/* Configurable percentages */}
                             <div className="grid grid-cols-1 gap-4 mb-6 sm:grid-cols-2">
                                 <div>
-                                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                                         Expected Attendance (%)
                                     </label>
                                     <input
@@ -195,12 +197,12 @@ const Mahaprasad = () => {
                                         max="100"
                                         value={planning.expectedAttendancePercentage}
                                         onChange={handleInputChange}
-                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950"
+                                        className="mt-1.5 pill-input"
                                     />
-                                    <p className="text-[10px] text-gray-400 mt-1.5">% of residents expected to attend the festival</p>
+                                    <p className="text-[10px] text-slate-400 mt-1.5">% of residents expected to attend the festival</p>
                                 </div>
                                 <div>
-                                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                                    <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                                         Safety Buffer (%)
                                     </label>
                                     <input
@@ -210,25 +212,25 @@ const Mahaprasad = () => {
                                         max="100"
                                         value={planning.safetyBufferPercentage}
                                         onChange={handleInputChange}
-                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950"
+                                        className="mt-1.5 pill-input"
                                     />
-                                    <p className="text-[10px] text-gray-400 mt-1.5">Extra meals prepared on top of expected attendance</p>
+                                    <p className="text-[10px] text-slate-400 mt-1.5">Extra meals prepared on top of expected attendance</p>
                                 </div>
                             </div>
 
                             {/* Calculation result */}
-                            <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 p-5 text-white shadow-lg shadow-indigo-600/20 sm:p-6">
+                            <div className="rounded-2xl bg-gradient-to-br from-indigo-600 to-indigo-700 p-5 text-white shadow-md shadow-indigo-600/10 sm:p-6">
                                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6">
                                     <div>
                                         <div className="text-[10px] font-bold uppercase tracking-wider text-indigo-200">
                                             Expected Attendance
                                         </div>
                                         <div className="mt-2 flex items-end gap-1.5">
-                                            <span className="text-3xl font-bold">{expectedAttendance.toLocaleString("en-IN")}</span>
+                                            <span className="text-3xl font-extrabold">{expectedAttendance.toLocaleString("en-IN")}</span>
                                             <span className="text-xs font-medium text-indigo-200 pb-1">people</span>
                                         </div>
-                                        <p className="text-[10px] text-indigo-200 mt-1.5">
-                                            {planning.totalPeople} × {Number(planning.expectedAttendancePercentage) || 0}%
+                                        <p className="text-[10px] text-indigo-200/80 mt-1.5">
+                                             {planning.totalPeople} × {Number(planning.expectedAttendancePercentage) || 0}%
                                         </p>
                                     </div>
                                     <div>
@@ -236,10 +238,10 @@ const Mahaprasad = () => {
                                             Recommended Meals
                                         </div>
                                         <div className="mt-2 flex items-end gap-1.5">
-                                            <span className="text-3xl font-bold">{recommendedMeals.toLocaleString("en-IN")}</span>
+                                            <span className="text-3xl font-extrabold">{recommendedMeals.toLocaleString("en-IN")}</span>
                                             <span className="text-xs font-medium text-indigo-200 pb-1">servings</span>
                                         </div>
-                                        <p className="text-[10px] text-indigo-200 mt-1.5">
+                                        <p className="text-[10px] text-indigo-200/80 mt-1.5">
                                             Attendance + {Number(planning.safetyBufferPercentage) || 0}% safety buffer
                                         </p>
                                     </div>
@@ -247,14 +249,14 @@ const Mahaprasad = () => {
                             </div>
 
                             <div className="mt-5">
-                                <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Planning Note</label>
+                                <label className="text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Planning Note</label>
                                 <textarea
                                     name="note"
                                     value={planning.note || ""}
                                     onChange={handleInputChange}
                                     rows="2"
                                     placeholder="e.g. 421 residents, 80% attendance, 10% buffer - prepare 371 meals"
-                                    className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950"
+                                    className="mt-1.5 pill-input"
                                 ></textarea>
                             </div>
                         </div>
@@ -262,34 +264,34 @@ const Mahaprasad = () => {
 
                     {/* Building-wise breakdown + steps */}
                     <div className="space-y-6">
-                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+                        <div className="card p-5 sm:p-6">
                             <div className="flex items-center gap-3 mb-5">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-950/30 dark:text-emerald-400">
                                     <Building2 className="h-5 w-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-md font-bold text-gray-800 dark:text-white">People by Building</h3>
-                                    <p className="text-xs text-gray-400 mt-0.5">Resident population breakdown</p>
+                                    <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-white">People by Building</h3>
+                                    <p className="pg-subtitle">Resident population breakdown</p>
                                 </div>
                             </div>
 
                             {buildings.length === 0 ? (
-                                <p className="text-sm text-gray-400 py-6 text-center">No buildings configured yet</p>
+                                <p className="text-xs text-slate-400 py-6 text-center">No buildings configured yet</p>
                             ) : (
                                 <div className="space-y-2">
                                     {buildings.map((b) => (
-                                        <div key={b.building} className="flex items-center justify-between rounded-xl border border-gray-100 px-4 py-3 dark:border-gray-800">
+                                        <div key={b.building} className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50/40 px-3.5 py-2.5 dark:border-gray-800 dark:bg-gray-800/20">
                                             <div className="flex items-center gap-2.5">
-                                                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-50 text-xs font-bold text-indigo-600 dark:bg-indigo-950/30 dark:text-indigo-400">
+                                                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-xs font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">
                                                     B{b.building}
                                                 </div>
-                                                <div className="text-xs font-semibold text-gray-600 dark:text-gray-300">
+                                                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                                                     {b.households} households
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <span className="font-bold text-violet-600 dark:text-violet-400">{b.people}</span>
-                                                <span className="text-[10px] text-gray-400 ml-1">people</span>
+                                                <span className="font-bold text-slate-900 dark:text-white">{b.people}</span>
+                                                <span className="text-[10px] text-slate-400 ml-1">people</span>
                                             </div>
                                         </div>
                                     ))}
@@ -297,33 +299,33 @@ const Mahaprasad = () => {
                             )}
                         </div>
 
-                        <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-md shadow-gray-100/30 dark:border-gray-800 dark:bg-gray-900">
+                        <div className="card p-5 sm:p-6">
                             <div className="flex items-center gap-3 mb-5">
                                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-600 dark:bg-amber-950/30 dark:text-amber-400">
                                     <ShieldCheck className="h-5 w-5" />
                                 </div>
                                 <div>
-                                    <h3 className="text-md font-bold text-gray-800 dark:text-white">How it works</h3>
-                                    <p className="text-xs text-gray-400 mt-0.5">Calculation steps</p>
+                                    <h3 className="text-sm sm:text-base font-bold text-slate-800 dark:text-white">How it works</h3>
+                                    <p className="pg-subtitle">Calculation steps</p>
                                 </div>
                             </div>
-                            <ol className="space-y-3 text-xs text-gray-500 dark:text-gray-400">
-                                <li className="flex gap-2.5">
-                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">1</span>
+                            <ol className="space-y-3 pg-subtitle">
+                                <li className="flex gap-2.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-[10px] font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">1</span>
                                     Sum family member counts of all active registered households
                                 </li>
-                                <li className="flex gap-2.5">
-                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">2</span>
+                                <li className="flex gap-2.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-[10px] font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">2</span>
                                     Multiply by expected attendance % → expected attendees
                                 </li>
-                                <li className="flex gap-2.5">
-                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-100 text-[10px] font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">3</span>
+                                <li className="flex gap-2.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-indigo-50 text-[10px] font-bold text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">3</span>
                                     Add safety buffer % on top → recommended meals
                                 </li>
-                                <li className="flex gap-2.5">
-                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-100 text-[10px] font-bold text-amber-600 dark:bg-amber-950/40 dark:text-amber-400">!</span>
+                                <li className="flex gap-2.5 text-xs text-slate-600 dark:text-slate-400">
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-amber-50 text-[10px] font-bold text-amber-600 dark:bg-amber-950/40 dark:text-amber-400">!</span>
                                     <span>
-                                        <b>Never</b> includes External Donors, unregistered flats or inactive households
+                                        <b className="text-slate-800 dark:text-slate-200">Never</b> includes External Donors, unregistered flats or inactive households
                                     </span>
                                 </li>
                             </ol>

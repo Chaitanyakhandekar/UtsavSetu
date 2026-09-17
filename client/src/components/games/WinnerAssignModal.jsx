@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { X, Award, Search, UserCheck, Home, Phone, FileText, Check } from "lucide-react";
 import { householdApi } from "../../api/household.api.js";
 import toast from "react-hot-toast";
+import { VoiceInput } from "../VoiceInput.jsx";
 
 const WinnerAssignModal = ({
     isOpen,
@@ -153,7 +154,7 @@ const WinnerAssignModal = ({
                                     </button>
                                 )}
                             </div>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={winnerName}
                                 onChange={(e) => setWinnerName(e.target.value)}
@@ -254,7 +255,7 @@ const WinnerAssignModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Remark / Note (Optional)
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={note}
                                 onChange={(e) => setNote(e.target.value)}

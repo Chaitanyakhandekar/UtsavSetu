@@ -22,14 +22,7 @@ import ProtectedRouteAuth from './components/guards/ProtectedRouteAuth.jsx'
 function App() {
   return (
     <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        * { font-family: 'Inter', sans-serif; box-sizing: border-box; }
-        html, body, #root {
-          height: 100%;
-          margin: 0;
-        }
-      `}</style>
+
       
       {/* Toast Notifications System */}
       <Toaster 
