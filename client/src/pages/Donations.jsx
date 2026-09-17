@@ -5,6 +5,7 @@ import { householdApi } from "../api/household.api.js";
 import { externalDonorApi } from "../api/externalDonor.api.js";
 import { buildingConfigApi } from "../api/buildingConfig.api.js";
 import { useMandalStore } from "../store/useMandalStore.js";
+import { VoiceInput } from "../components/VoiceInput.jsx";
 import {
     Plus,
     Search,
@@ -185,16 +186,16 @@ const PaymentModal = ({ donation, editingPayment, onClose, onSaved }) => {
                                     required
                                 />
                             </div>
-                            <div>
-                                <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Note / Reference</label>
-                                <input
-                                    type="text"
-                                    value={note}
-                                    onChange={(e) => setNote(e.target.value)}
-                                    placeholder="UPI ref, cheque no..."
-                                    className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
-                                />
-                            </div>
+                                <div>
+                                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Note / Reference</label>
+                                    <VoiceInput
+                                        type="text"
+                                        value={note}
+                                        onChange={(e) => setNote(e.target.value)}
+                                        placeholder="UPI ref, cheque no..."
+                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-700 dark:bg-gray-950 dark:text-white"
+                                    />
+                                </div>
                         </div>
                     </div>
                     <div className="flex flex-col-reverse gap-2 border-t border-gray-100 bg-gray-50 px-6 py-4 rounded-b-3xl sm:flex-row sm:items-center sm:justify-end sm:gap-3 dark:border-gray-800 dark:bg-gray-950">
@@ -1484,7 +1485,7 @@ const Donations = () => {
                                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                                     <div>
                                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Occupant Name *</label>
-                                                        <input type="text" value={manualHeadOfFamily} onChange={(e) => setManualHeadOfFamily(e.target.value)} placeholder="Head of the family / occupant" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
+                                                        <VoiceInput type="text" value={manualHeadOfFamily} onChange={(e) => setManualHeadOfFamily(e.target.value)} placeholder="Head of the family / occupant" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
                                                     </div>
                                                     <div>
                                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Phone Number</label>
@@ -1571,7 +1572,7 @@ const Donations = () => {
                                             <>
                                                 <div>
                                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Donor Name *</label>
-                                                    <input type="text" name="donorName" required value={formData.donorName} onChange={handleInputChange} placeholder="Rajesh Enterprises" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
+                                                    <VoiceInput type="text" name="donorName" required value={formData.donorName} onChange={handleInputChange} placeholder="Rajesh Enterprises" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
                                                 </div>
                                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                                     <div>
@@ -1588,11 +1589,11 @@ const Donations = () => {
                                                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                                                     <div>
                                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Organization / Business</label>
-                                                        <input type="text" value={organizationName} onChange={(e) => setOrganizationName(e.target.value)} placeholder="e.g. Sharma Traders" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
+                                                        <VoiceInput type="text" value={organizationName} onChange={(e) => setOrganizationName(e.target.value)} placeholder="e.g. Sharma Traders" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
                                                     </div>
                                                     <div>
                                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Address</label>
-                                                        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Shop No. 12, Main Market" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
+                                                        <VoiceInput type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Shop No. 12, Main Market" className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
                                                     </div>
                                                 </div>
                                             </>
@@ -1614,7 +1615,7 @@ const Donations = () => {
                                     </div>
                                     <div className="mt-4">
                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Note / Remark</label>
-                                        <input type="text" name="note" value={formData.note} onChange={handleInputChange} placeholder="Special contribution or remarks..." className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
+                                        <VoiceInput type="text" name="note" value={formData.note} onChange={handleInputChange} placeholder="Special contribution or remarks..." className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-800 dark:bg-gray-950 dark:text-white" />
                                     </div>
                                 </div>
 
@@ -1730,7 +1731,7 @@ const Donations = () => {
                                                             </div>
 
                                                             <div>
-                                                                <input
+                                                                <VoiceInput
                                                                     type="text"
                                                                     value={row.note || ""}
                                                                     onChange={(e) =>

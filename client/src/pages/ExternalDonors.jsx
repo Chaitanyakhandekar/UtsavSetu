@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Layout from "../components/Layout.jsx";
 import { externalDonorApi } from "../api/externalDonor.api.js";
 import { useMandalStore } from "../store/useMandalStore.js";
+import { VoiceInput, VoiceTextarea } from "../components/VoiceInput.jsx";
 import {
     Plus,
     Search,
@@ -580,7 +581,7 @@ const ExternalDonors = () => {
                             <div className="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Donor Name *</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="donorName"
                                         required
@@ -620,7 +621,7 @@ const ExternalDonors = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Organization / Business Name</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="organizationName"
                                         value={formData.organizationName}
@@ -632,7 +633,7 @@ const ExternalDonors = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Address</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="address"
                                         value={formData.address}
@@ -644,14 +645,14 @@ const ExternalDonors = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Note / Remarks</label>
-                                    <textarea
+                                    <VoiceTextarea
                                         name="note"
                                         value={formData.note}
                                         onChange={handleInputChange}
                                         rows="2"
                                         placeholder="Any remarks about this donor..."
-                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950"
-                                    ></textarea>
+                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950 resize-none"
+                                    />
                                 </div>
 
                                 {editingId && (

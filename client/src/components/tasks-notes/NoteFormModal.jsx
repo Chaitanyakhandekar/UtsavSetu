@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, FileText, Bell } from "lucide-react";
 import toast from "react-hot-toast";
+import { VoiceInput, VoiceTextarea } from "../VoiceInput.jsx";
 
 const NoteFormModal = ({ isOpen, onClose, onSubmit, editingNote, isSubmitting }) => {
     const [title, setTitle] = useState("");
@@ -85,7 +86,7 @@ const NoteFormModal = ({ isOpen, onClose, onSubmit, editingNote, isSubmitting })
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Note Title <span className="text-rose-500">*</span>
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -115,7 +116,7 @@ const NoteFormModal = ({ isOpen, onClose, onSubmit, editingNote, isSubmitting })
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Note Content <span className="text-rose-500">*</span>
                             </label>
-                            <textarea
+                            <VoiceTextarea
                                 value={content}
                                 onChange={(e) => setContent(e.target.value)}
                                 rows={6}

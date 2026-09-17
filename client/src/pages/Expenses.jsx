@@ -3,6 +3,7 @@ import Layout from "../components/Layout.jsx";
 import { expenseApi } from "../api/expense.api.js";
 import { categoryApi } from "../api/category.api.js";
 import { useMandalStore } from "../store/useMandalStore.js";
+import { VoiceInput, VoiceTextarea } from "../components/VoiceInput.jsx";
 import {
     Plus,
     Search,
@@ -1004,7 +1005,7 @@ const Expenses = () => {
                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                                             Expense Title *
                                         </label>
-                                        <input
+                                        <VoiceInput
                                             type="text"
                                             name="title"
                                             required
@@ -1054,7 +1055,7 @@ const Expenses = () => {
                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                                             Vendor / Shop Name
                                         </label>
-                                        <input
+                                        <VoiceInput
                                             type="text"
                                             name="vendorName"
                                             value={formData.vendorName}
@@ -1253,14 +1254,14 @@ const Expenses = () => {
                                         <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                                             Note / Description
                                         </label>
-                                        <textarea
+                                        <VoiceTextarea
                                             name="note"
                                             value={formData.note}
                                             onChange={handleInputChange}
                                             rows="2"
                                             placeholder="Detailed description, payment notes, etc..."
-                                            className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950 dark:text-white"
-                                        ></textarea>
+                                            className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950 dark:text-white resize-none"
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -1594,7 +1595,7 @@ const Expenses = () => {
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                                         Payment Note / Remarks
                                     </label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="note"
                                         value={paymentFormData.note}

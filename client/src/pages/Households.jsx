@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import Layout from "../components/Layout.jsx";
 import { householdApi } from "../api/household.api.js";
 import { buildingConfigApi } from "../api/buildingConfig.api.js";
+import { VoiceInput, VoiceTextarea } from "../components/VoiceInput.jsx";
 import {
     Plus,
     Search,
@@ -1007,7 +1008,7 @@ const Households = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Head of Family *</label>
-                                    <input
+                                    <VoiceInput
                                         type="text"
                                         name="headOfFamily"
                                         required
@@ -1047,14 +1048,14 @@ const Households = () => {
 
                                 <div>
                                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Note / Remarks</label>
-                                    <textarea
+                                    <VoiceTextarea
                                         name="note"
                                         value={formData.note}
                                         onChange={handleInputChange}
                                         rows="2"
                                         placeholder="Any remarks about this household..."
-                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950"
-                                    ></textarea>
+                                        className="mt-2 w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm placeholder-gray-400 outline-none transition focus:border-indigo-500 dark:border-gray-850 dark:bg-gray-950 resize-none"
+                                    />
                                 </div>
 
                                 {editingId && (

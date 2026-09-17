@@ -20,14 +20,19 @@ import {
     X,
     CheckCircle2,
     XCircle,
-    Archive
+    Archive,
+    Mic
 } from "lucide-react";
 import { useThemeStore } from "../store/themeStore.js";
+import { useVoiceStore, SUPPORTED_LANGUAGES } from "../store/useVoiceStore.js";
+import { isSpeechRecognitionSupported } from "../components/VoiceInput.jsx";
 import toast from "react-hot-toast";
 
 const Settings = () => {
     const { years, setYears, fetchYears } = useMandalStore();
     const { theme, setTheme } = useThemeStore();
+    const { enabled: voiceEnabled, setEnabled: setVoiceEnabled, language: voiceLanguage, setLanguage: setVoiceLanguage } = useVoiceStore();
+    const speechSupported = isSpeechRecognitionSupported();
 
     // Festival Year states
     const [newYear, setNewYear] = useState("");
@@ -372,6 +377,104 @@ const Settings = () => {
                                 <Moon className="h-4 w-4" />
                                 Dark
                             </button>
+                        </div>
+                    </div>
+
+                    {/* Voice Typing / Speech-to-Text Settings Card */}
+                    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+                        <div className="flex items-center justify-between mb-1.5">
+                            <div className="flex items-center gap-2">
+                                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/40 dark:text-indigo-400">
+                                    <Mic className="h-4 w-4" />
+                                </div>
+                                <h3 className="text-md font-bold text-gray-800 dark:text-white">
+                                    Voice Typing
+                                </h3>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const next = !voiceEnabled;
+                                    setVoiceEnabled(next);
+                                    toast.success(next ? "Voice typing enabled" : "Voice typing disabled");
+                                }}
+                                aria-label={voiceEnabled ? "Disable voice typing" : "Enable voice typing"}
+                                className="text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition"
+                            >
+                                {voiceEnabled ? (
+                                    <ToggleRight className="h-8 w-8 text-indigo-600 dark:text-indigo-400" />
+                                ) : (
+                                    <ToggleLeft className="h-8 w-8 text-gray-300 dark:text-gray-700" />
+                                )}
+                            </button>
+                        </div>
+                        <p className="text-xs text-gray-400 mb-4">
+                            Speech-to-text allows entering data by speaking in Marathi, Hindi, or English.
+                        </p>
+
+                        {/* Browser Compatibility Notice */}
+                        <div className={`mb-4 flex items-start gap-2 rounded-xl p-3 text-xs ${
+                            speechSupported
+                                ? "border border-emerald-100 bg-emerald-50/50 text-emerald-800 dark:border-emerald-900/30 dark:bg-emerald-950/20 dark:text-emerald-300"
+                                : "border border-amber-100 bg-amber-50/50 text-amber-800 dark:border-amber-900/30 dark:bg-amber-950/20 dark:text-amber-300"
+                        }`}>
+                            {speechSupported ? (
+                                <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-600 dark:text-emerald-400 mt-0.5" />
+                            ) : (
+                                <AlertCircle className="h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400 mt-0.5" />
+                            )}
+                            <div>
+                                <span className="font-bold block">
+                                    {speechSupported ? "Browser Speech API Active" : "Browser Speech API Unsupported"}
+                                </span>
+                                <span className="text-[11px] opacity-90">
+                                    {speechSupported
+                                        ? "Web Speech API is available. Tap the microphone icon inside supported fields to speak."
+                                        : "Your browser does not natively support the Web Speech API. Regular keyboard typing remains fully active."}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Recognition Language Selector */}
+                        <div>
+                            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block mb-2">
+                                Recognition Language
+                            </label>
+                            <div className="space-y-2">
+                                {SUPPORTED_LANGUAGES.map((lang) => {
+                                    const isSelected = voiceLanguage === lang.code;
+                                    return (
+                                        <button
+                                            key={lang.code}
+                                            type="button"
+                                            onClick={() => {
+                                                setVoiceLanguage(lang.code);
+                                                toast.success(`Voice language set to ${lang.label}`);
+                                            }}
+                                            disabled={!voiceEnabled}
+                                            className={`flex w-full items-center justify-between rounded-xl border p-2.5 sm:p-3 text-left transition-all ${
+                                                !voiceEnabled
+                                                    ? "opacity-40 cursor-not-allowed border-gray-100 dark:border-gray-800"
+                                                    : isSelected
+                                                    ? "border-indigo-600 bg-indigo-50/50 text-indigo-700 shadow-sm dark:border-indigo-500 dark:bg-indigo-950/30 dark:text-indigo-300"
+                                                    : "border-gray-200 text-gray-600 hover:bg-gray-50 dark:border-gray-800 dark:text-gray-300 dark:hover:bg-gray-950"
+                                            }`}
+                                        >
+                                            <div>
+                                                <span className="text-xs font-bold block">{lang.label}</span>
+                                                <span className="text-[10px] text-gray-400 block">Locale: {lang.code}</span>
+                                            </div>
+                                            <span className={`text-xs font-semibold px-2 py-0.5 rounded-lg ${
+                                                isSelected
+                                                    ? "bg-indigo-600 text-white dark:bg-indigo-500"
+                                                    : "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400"
+                                            }`}>
+                                                {lang.native}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                 </div>

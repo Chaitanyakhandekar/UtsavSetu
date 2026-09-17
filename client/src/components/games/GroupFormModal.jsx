@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Users, Tag, AlertCircle, Check } from "lucide-react";
 import toast from "react-hot-toast";
+import { VoiceInput, VoiceTextarea } from "../VoiceInput.jsx";
 
 const GroupFormModal = ({
     isOpen,
@@ -97,7 +98,7 @@ const GroupFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Group Name / Title <span className="text-rose-500">*</span>
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
@@ -147,7 +148,7 @@ const GroupFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Category / Gender (Optional)
                             </label>
-                            <input
+                            <VoiceInput
                                 type="text"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
@@ -161,7 +162,7 @@ const GroupFormModal = ({
                             <label className="block text-xs font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
                                 Group Notes (Optional)
                             </label>
-                            <textarea
+                            <VoiceTextarea
                                 value={description}
                                 onChange={(e) => setDescription(e.target.value)}
                                 rows={2}
